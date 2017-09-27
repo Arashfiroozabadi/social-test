@@ -1,15 +1,12 @@
 import React from 'react';
 import './../styles/style.scss';
-import Test from './app';
 
-import img from './../styles/img/test.svg'
-;
+import img from './../styles/img/react-logo.svg';
 
 const App = () => (
   <div>
-    <Test />
     <img src={img} alt="" />
-    <h1>Reactsxxx</h1>
+    <h1>React</h1>
   </div>
 );
 
