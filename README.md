@@ -8,5 +8,5 @@
 ```
 ### Builds the app for production to the ``` build ``` folder.
 ```
-    npm prod
+    npm run prod
 ```
