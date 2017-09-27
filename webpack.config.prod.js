@@ -28,7 +28,7 @@ module.exports = {
         },
         {
           test: /\.(eot|ttf|woff|woff2)$/,
-          loader: 'file-loader?name=[name].[ext]&outputPath=fonts/'
+          loader: 'file-loader?name=[name].[ext]&outputPath=fonts/&publicPath=../'
         },
         {
           test: /\.(jpe?g|png|gif|svg)$/i,
@@ -59,7 +59,7 @@ module.exports = {
         allChunks:true
       })
     ]
-}
+};
 
 
 
