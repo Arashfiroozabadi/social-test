@@ -48,9 +48,9 @@ module.exports = {
     },
     plugins: [
       new HWP({
-        // minify:{
-        //   collapseWhitespace:true
-        // },
+        minify:{
+          collapseWhitespace:true
+        },
         template:'index.html'
       }),
       new ETP({
