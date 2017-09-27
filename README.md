@@ -13,3 +13,6 @@
 # In This Project I used
 
 * <h3>Webpack</h3>
+* <h3>hot-module-replacement-plugin</h3>
+* <h3>react-hot-loader</h3>
+* <h3>Sass</h3>
