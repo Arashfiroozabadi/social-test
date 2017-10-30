@@ -7,7 +7,6 @@ import { Provider } from 'react-redux';
 
 import App from './containers/index';
 import {store} from './reducers';
-///helloo
 ReactDOM.render(
   <AppContainer>
     <IntlProvider locale="en">
