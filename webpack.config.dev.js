@@ -30,7 +30,14 @@ module.exports = {
 					}, {
 							loader: "sass-loader" // compiles Sass to CSS
 					}]
-				},
+        },
+        {
+          test:/\.css$/,
+          use: [
+            { loader:"style-loader" },
+            { loader:"css-loader"}
+          ]
+        },
 				{ 
 					test: /\.(js|jsx)$/,
 					exclude: /node_modules/,
@@ -58,9 +65,11 @@ module.exports = {
     },
     devServer:{
         contentBase: path.join(__dirname, "dist"),
-				compress: true,
+        compress: true,
+        historyApiFallback:true,
 				hot: true,
         port: 9000,
+        host: '0.0.0.0',
         stats: 'errors-only'
     },
     plugins: [

@@ -1,12 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
+import {IntlProvider} from 'react-intl';
+
+import { Provider } from 'react-redux';
 
 import App from './containers/index';
+import {store} from './reducers';
+
+
+
 
 ReactDOM.render(
   <AppContainer>
-    <App />
+    <IntlProvider locale="en">
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </IntlProvider>
   </AppContainer>,
     document.getElementById('app')
 );
@@ -16,7 +27,9 @@ if (module.hot) {
       const NextApp = require('./containers/index').default;
       ReactDOM.render(
         <AppContainer>
-          <NextApp />
+          <Provider store={store}>
+            <NextApp />
+          </Provider>          
         </AppContainer>,
         document.getElementById('app')
       );
