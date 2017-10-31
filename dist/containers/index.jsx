@@ -18,11 +18,11 @@ const App = () => (
   <Router>
     <div className="continer">
       <Helmet
-        defaultTitle="My Site"
-        titleTemplate="tets.com*%s"
+        defaultTitle="Social Test"
+        titleTemplate="Social Test %s"
       >
         <meta charSet="utf-8" />
-        <title>My Title</title>
+        <title>Home</title>
         <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico" />
         <link rel="apple-touch-icon" sizes="72x72" href="http://mysite.com/img/apple-touch-icon-72x72.png" />
       </Helmet>
