@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import {Paper, Button} from 'material-ui';
+import { Paper, Button } from 'material-ui';
 import styled from 'styled-components';
 import {FormattedNumber} from 'react-intl';
 // import { Button } from 'react-bootstrap';
 import AA from  '../../../styles/img/me.jpg';
 
-const Btn = styled(Button)`
-color: white!important;
-background: tomato!important;
-`;
 const Block = styled(Paper)`
 display:flex;
 padding:5px 10px;
@@ -45,18 +42,49 @@ const UserNetwork=styled.div`
 display:flex;
 width:40%;
 `;
-
+const StContainer = styled.div`
+  display:flex;
+  align-items: center;
+`;
+const Btn = styled(Button)`
+background: tomato!important;
+&:hover {
+  background-color: transparent!important;
+  color:white;
+  border: 1px solid black;
+}
+`;
+const StLink = styled(Link)`
+text-decoration:none!important;
+margin:5px;
+`;
 
 class UserDataBar extends Component {
   static propTypes = {
     userName:PropTypes.string.isRequired,
+    userLogin:PropTypes.bool.isRequired
   }
   componentDidMount(){}
   render() {
     const {
-      userName
+      userName,
+      userLogin
     }= this.props;
-
+    if(userLogin === false){
+      return(
+        <Block>
+          <h1>Social-Test</h1>
+          <StContainer>
+            <StLink to="/login" replace>
+              <Btn>Login</Btn>
+            </StLink>
+            <StLink to="/signin" replace>
+              <Btn>Signin</Btn>
+            </StLink>
+          </StContainer>
+        </Block>
+      );
+    }
     return (
       <Block>
         <Avatar>
