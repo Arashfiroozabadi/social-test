@@ -10,9 +10,6 @@ import Routes from './components/routes';
 import UserDataBar from './components/userDataBar';
 
 import './../styles/style.scss';
-import img from './../styles/img/react-logo.svg';
-
-
 
 const App = () => (
   <Router>
@@ -26,16 +23,9 @@ const App = () => (
         <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico" />
         <link rel="apple-touch-icon" sizes="72x72" href="http://mysite.com/img/apple-touch-icon-72x72.png" />
       </Helmet>
-      {/* <header>
-        <img src={img} alt="" />
-      </header> */}
       <NavbarLink />
       <UserDataBar />
       <Routes />
-      {/* <section className="form">
-        <FormOne />
-        <AddList />
-      </section> */}
     </div>
   </Router>
 );
