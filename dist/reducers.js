@@ -9,17 +9,11 @@ export const SEARCH = 'SEARCH';
 
 //REDUCERS---------------------------
 export const DefaultState = {
-	name:localStorage.getItem('userName'),
-	tell:'',
-	userID:'',
-	email:'',
-	unreadCount:10000,
-	status:false,
-	count:'',
-	searchTerm:'salam',
-	addToList:false,
-	link:'root Links',
+	userName:'s',	
+	lastPosts:[],
+	userLogin:false,
 };
+
 
 export const rootReducer = (state = DefaultState, action) => {
 	switch (action.type) {

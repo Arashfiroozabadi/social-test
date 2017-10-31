@@ -49,11 +49,14 @@ width:40%;
 
 class UserDataBar extends Component {
   static propTypes = {
-    userName:PropTypes.string.isRequired
+    userName:PropTypes.string.isRequired,
   }
   componentDidMount(){}
   render() {
-    const {userName}= this.props;
+    const {
+      userName
+    }= this.props;
+
     return (
       <Block>
         <Avatar>
@@ -81,7 +84,8 @@ class UserDataBar extends Component {
 }
 
 const mapStateToProps = state => ({
-  userName:state.rootReducer.name
+  userName:state.rootReducer.userName,
+  userLogin:state.rootReducer.userLogin
 });
 
 export default connect(mapStateToProps)(UserDataBar);
