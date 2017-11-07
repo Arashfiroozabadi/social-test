@@ -7,7 +7,7 @@ import {
    FormattedTime
  } from 'react-intl';
 import { connect } from 'react-redux';
-import {addUser , store} from '../../../reducers';
+import { addUser } from '../../../store/actionCreators';
 
 
 class Intel extends Component {
@@ -56,13 +56,11 @@ const mapDispatchToProps = dispatch => ({
     axios.get('http://localhost:3000/user').then(
       res => (
         dispatch(addUser(res.data)),
-        console.log('test'),
         localStorage.setItem('userName',res.data)
       )
     );
   }
 });
-
 
 export default connect(
 	mapStateToProps,

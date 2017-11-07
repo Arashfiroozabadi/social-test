@@ -7,6 +7,9 @@ import styled from 'styled-components';
 import {FormattedNumber} from 'react-intl';
 // import { Button } from 'react-bootstrap';
 import AA from  '../../../styles/img/me.jpg';
+import { getLoginUser } from '../../../store/actionCreators';
+import { store } from '../../../store/store';
+
 
 const Block = styled(Paper)`
 display:flex;
@@ -64,13 +67,16 @@ class UserDataBar extends Component {
     userName:PropTypes.string.isRequired,
     userLogin:PropTypes.bool.isRequired
   }
-  componentDidMount(){}
+  componentDidMount(){
+    store.dispatch(getLoginUser());
+  }
   render() {
     const {
       userName,
       userLogin
     }= this.props;
-    if(userLogin === false){
+    console.log(userLogin);
+    if(userLogin === undefined){
       return(
         <Block>
           <h1>Social-Test</h1>

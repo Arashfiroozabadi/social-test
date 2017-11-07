@@ -43,11 +43,6 @@ class Form extends React.Component{
 					passwordValid, 
 					rePasswordValid
 				} = this.state;
-				// let nameValid = this.state.nameValid;
-				// let tellValid = this.state.tellValid;
-				// let emailValid = this.state.emailValid;
-				// let passwordValid = this.state.passwordValid;
-				// let rePasswordValid = this.state.rePasswordValid;
 				const passValue = this.state.password;
 		
 				switch(fieldName) {

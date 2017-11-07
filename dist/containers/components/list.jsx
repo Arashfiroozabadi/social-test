@@ -5,7 +5,6 @@ import {connect} from 'react-redux';
 import styled, { css, injectGlobal } from 'styled-components';
 import { Button } from 'react-bootstrap';
 
-import {setSearch, store} from '../../reducers';
 
 injectGlobal`
 body {
@@ -49,19 +48,18 @@ ${props => props.complex ? complexMixin : 'color: blue;'}
 
 class AddList extends Component {
   static propTypes = {
-    searchTerm:PropTypes.string.isRequired,
+    searchTerm:PropTypes.string,
     status:PropTypes.bool,
-    handleSearch:PropTypes.func.isRequired,
-    handleC:PropTypes.func.isRequired
+    handleSearch:PropTypes.func,
+    handleC:PropTypes.func
   }
   static defaultProps = {
     status:false
   }
   componentDidMount(){
-    console.log(store.getState());    
+    
   }
   componentWillReceiveProps(){
-    console.log(store.getState());   
   }
   
   
@@ -91,10 +89,10 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = dispatch => ({
   handleSearch(e){
-    dispatch(setSearch(e.target.value));
+    dispatch();
   },
   handleC(){
-    dispatch(setSearch('salam',true));
+    dispatch();
   }
 });
 

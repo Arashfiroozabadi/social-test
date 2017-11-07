@@ -6,7 +6,8 @@ import {IntlProvider} from 'react-intl';
 import { Provider } from 'react-redux';
 
 import App from './containers/index';
-import {store} from './reducers';
+import { store } from './store/store';
+
 ReactDOM.render(
   <AppContainer>
     <IntlProvider locale="en">

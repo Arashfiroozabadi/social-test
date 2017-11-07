@@ -1,16 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Switch, Route } from 'react-router-dom';
 import FormOne from './form1';
 import List from './list';
 import Home from './home';
+import Users from './users'
 
 
 
 const routeComp = [
+  {path:'/', comp:Home},
   {path:'/form', comp:FormOne},
   {path:'/list', comp:List},
-  {path:'/', comp:Home}
+  {path:'/user', comp:Users}
 ];
 
 
