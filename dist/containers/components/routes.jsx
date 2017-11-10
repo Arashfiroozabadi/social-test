@@ -4,13 +4,15 @@ import { Switch, Route } from 'react-router-dom';
 import FormOne from './form1';
 import List from './list';
 import Home from './home';
-import Users from './users'
+import Users from './users';
+import Login from './login';
 
 
 
 const routeComp = [
   {path:'/', comp:Home},
-  {path:'/form', comp:FormOne},
+  {path:'/signup', comp:FormOne},
+  {path:'/login', comp:Login},
   {path:'/list', comp:List},
   {path:'/user', comp:Users}
 ];

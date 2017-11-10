@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Paper, Button } from 'material-ui';
 import styled from 'styled-components';
 import {FormattedNumber} from 'react-intl';
 // import { Button } from 'react-bootstrap';
+
 import AA from  '../../../styles/img/me.jpg';
-import { getLoginUser } from '../../../store/actionCreators';
 import { store } from '../../../store/store';
 
 
@@ -68,14 +69,12 @@ class UserDataBar extends Component {
     userLogin:PropTypes.bool.isRequired
   }
   componentDidMount(){
-    store.dispatch(getLoginUser());
   }
   render() {
     const {
       userName,
       userLogin
     }= this.props;
-    console.log(userLogin);
     if(userLogin === undefined){
       return(
         <Block>
@@ -84,7 +83,7 @@ class UserDataBar extends Component {
             <StLink to="/login" replace>
               <Btn>Login</Btn>
             </StLink>
-            <StLink to="/signin" replace>
+            <StLink to="/signup" replace>
               <Btn>Signin</Btn>
             </StLink>
           </StContainer>

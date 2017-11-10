@@ -10,22 +10,21 @@ class Users extends Component {
     userName:[]
   }
   componentWillMount() {
-    const that = this;    
-    // axios.get('http://192.168.1.35:3000/user')
-    axios.get('http://localhost:3000/user')
-    .then(response => {
-      that.setState({
-        userName:response.data
-      });
-      console.log(response.data);
-    });
   }
   render() {
     const {userName} = this.state;
     return (
       <div>
         <h1>User lists</h1>
-        {userName.map( (user, i) => (
+        
+      </div>  
+    );
+  }
+}
+
+export default Users;
+
+/* {userName.map( (user, i) => (
           <div key={i}>
             <div>
               <h2>{user.name}</h2>
@@ -39,11 +38,4 @@ class Users extends Component {
               </h4>
             </div>
           </div>
-        ) )}
-      </div>  
-    );
-  }
-}
-
-export default Users;
-
+        ) )} */

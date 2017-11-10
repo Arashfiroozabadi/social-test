@@ -20,8 +20,8 @@ class NavbarLink extends Component {
             <IndexLinkContainer replace to="/" activeClassName="active">
               <NavItem eventKey={1}>Home</NavItem>
             </IndexLinkContainer>
-            <LinkContainer replace activeClassName="active" to="/form">
-              <NavItem eventKey={2}>Form</NavItem>
+            <LinkContainer replace activeClassName="active" to="/login">
+              <NavItem eventKey={2}>Login</NavItem>
             </LinkContainer>
             <LinkContainer replace to="/list">
               <NavItem eventKey={3}>List</NavItem>

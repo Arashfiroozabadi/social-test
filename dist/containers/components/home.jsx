@@ -4,20 +4,16 @@ import { connect } from 'react-redux';
 import styled,{ keyframes } from 'styled-components';
 import { FormattedDate } from 'react-intl';
 import {
-  Paper,
   withStyles,
   Button,
   Card,
-  CardActions, 
   CardContent, 
   CardMedia,
   Typography,
-  IconButton,
   Divider
 } from 'material-ui';
 import {Favorite} from 'material-ui-icons';
 
-import Intel from './userProfile';
 import {getApiDataPost} from '../../store/actionCreators';
 import '../../styles/img/test.svg';
 import {store} from '../../store/store';
@@ -137,98 +133,14 @@ function Home ({classes,posts,getApiPost}){
   );
 }
 
-// class Home extends React.Component{
-//   static propTypes = {
-//     classes: PropTypes.object,
-//     authorPost:PropTypes.string,
-//     avatar:PropTypes.string,
-//     imgPost:PropTypes.string,
-//     description:PropTypes.string,
-//     dataCreate:PropTypes.string,
-//     likes:PropTypes.array,
-//     views:PropTypes.array,
-//     follow:PropTypes.bool,
-//     unfollow:PropTypes.bool
-//   }
-//   componentDidMount(){
-//     setTimeout( (() => {
-//       store.dispatch(getApiDataPost());
-//       }), 2000);      
-//   }
-//   render(){
-//     const { 
-//       classes,
-//       posts, 
-//       getApiPost
-//     } = this.props;
-//     console.log(posts);
-//     if(posts === undefined){
-//       return <h1 onLoadStart={getApiPost} onClick={getApiPost}>loading...</h1>;
-//     }
-//     return (
-//       <div>
-//         <button onClick={getApiPost}>test</button>
-//         <Intel />
-//         {posts.map( (posts, i) => (
-//           <div className={classes.container} key={i}>
-//             <Card className={classes.card}>
-//               <CardContent className={classes.cardContent}>
-//                 <div className={classes.autherAvatar}>
-//                   <img src={posts.avatar} alt="" style={{width:"40px",height:"40px"}} />
-//                   <h4>{posts.authorPost}</h4>
-//                 </div>
-//                 <Button className={classes.follow}>{posts.follow ? 'unfollow' :'follow'}</Button>
-//               </CardContent>
-//               <Divider />
-//               <CardMedia
-//                 className={classes.media}
-//                 image={posts.imgPost}
-//               />
-//               <Divider />        
-//               <CardContent className={classes.description}>
-//                 <Typography type="headline" component="h2">
-//                   {posts.description}
-//                 </Typography>
-//               </CardContent>
-//               <Divider />
-//               <CardContent className={classes.actions}>
-//                 <Favorite />
-//               </CardContent>
-//               <CardContent className={classes.cardFooter}>
-//                 <div>
-//                   <h5>{`Liks ${posts.likes.length}`}</h5>
-//                 </div>
-//                 <FormattedDate
-//                   value={posts.dataCreate}
-//                   year='numeric'
-//                   month='long'
-//                   day='2-digit'
-//                 />
-//               </CardContent>
-//             </Card>
-//           </div>
-//         ) )}
-//       </div>
-//     );
-//   }
-// }
 const Homee = withStyles(styles)(Home);
 const mapStateToProps = (state, ownProps) => ({
   posts:state.apiPosts.posts
-  // avatar:state.rootReducer,
-  // imgPost:state.rootReducer ,
-  // description:state.rootReducer,
-  // dataCreate:state.rootReducer,
-  // likes:state.rootReducer,
-  // views:state.rootReducer,
-  // follow:state.rootReducer,
-  // unfollow:state.rootReducer
 });
 const mapDispatchToProps = (dispatch, ownProps) => ({
     getApiPost:() => {
       setTimeout( (() => {
       dispatch(getApiDataPost());
-      console.log(ownProps);
       }), 2000);      
     }
   });

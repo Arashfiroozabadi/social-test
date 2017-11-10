@@ -8,12 +8,14 @@ import thunk from 'redux-thunk';
 
 import {
 	rootReducer,
-	apiPosts
+	apiPosts,
+	userData		
 } from './redusers';
 
 export const redusers = combineReducers({
 	rootReducer,
-	apiPosts
+	apiPosts,
+	userData
 });
 
 const middleware = [ thunk ];

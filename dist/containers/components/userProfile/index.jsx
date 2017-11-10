@@ -52,14 +52,14 @@ const mapStateToProps = state => ({
   tell:state.rootReducer.tell
 });
 const mapDispatchToProps = dispatch => ({
-	handle(){
-    axios.get('http://localhost:3000/user').then(
-      res => (
-        dispatch(addUser(res.data)),
-        localStorage.setItem('userName',res.data)
-      )
-    );
-  }
+	// handle(){
+  //   axios.get('http://localhost:3000/user').then(
+  //     res => (
+  //       dispatch(addUser(res.data)),
+  //       localStorage.setItem('userName',res.data)
+  //     )
+  //   );
+  // }
 });
 
 export default connect(
