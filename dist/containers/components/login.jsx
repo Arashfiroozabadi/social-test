@@ -66,19 +66,38 @@ class Login extends Component {
     userName:'',
     password:'',
     loading:'',
-    session:''
+    token:''
   }
   componentDidMount(){
-    axios.post('http://localhost:3000')
+    axios.get('http://localhost:3000/api/auth/me',{
+      headers:{
+        'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8',
+        'x-access-token': localStorage.token
+      }
+    })
     .then( res => {
       this.setState({
-        session:JSON.stringify(res.data)
+        token:res.data.msg
+      });
+    });
+  }
+
+  getToken = () => {
+    axios.get('http://localhost:3000/api/auth/me',{
+      headers:{
+        'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8',
+        'x-access-token': localStorage.token
+      }
+    })
+    .then( res => {
+      this.setState({
+        token:res.data.msg
       });
     });
   }
   
   getResp = () => {
-    axios.post('http://localhost:3000/login',{
+    axios.post('http://localhost:3000/api/auth/login',{
       userName:this.state.userName,
       password:this.state.password
     })
@@ -87,14 +106,18 @@ class Login extends Component {
         this.setState({
           loading:false,
           msg:response.data.msg
-        });
+        },
+        this.setToken(response.data.token));
+        this.getToken();
       }
     )
     .catch(err => {
       throw err;
     });
   }
-  
+  setToken= token => {
+    localStorage.setItem('token',token);  
+  }
   handleUserInput = e => { 
     const name = e.target.name;
     const value = e.target.value;
@@ -115,7 +138,7 @@ class Login extends Component {
     } = this.props;
     return (
       <Container>
-        <h5>{this.state.session}</h5>
+        <h5>{this.state.token}</h5>
         <Form>
           <TextField 
             label='user name'
