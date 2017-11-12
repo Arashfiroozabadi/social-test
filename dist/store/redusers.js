@@ -12,10 +12,7 @@ export const userData = (state={}, action) => {
 		case 'USER_DATA':
 			return {
 				userLogin:true,
-				userName:action.userData.userName,
-				tell:action.userData.tell,
-				email:action.userData.email,
-				tokenID:action.userData._id
+				userData:action.userData
 			};
 		default :
 			return state;	
