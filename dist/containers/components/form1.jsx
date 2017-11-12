@@ -99,7 +99,7 @@ class Form extends React.Component{
       handleSubmit= e => {
         e.preventDefault();
         // axios.post('http://192.168.1.34:3000/signup'
-        axios.post('http://localhost:3000/signup'
+        axios.post('http://localhost:3000/api/users'
         ,{
           userName:this.state.name,
           tell:this.state.tell,
@@ -107,9 +107,11 @@ class Form extends React.Component{
           password: this.state.password
         })
         .then( response => {
+          localStorage.setItem('token', response.data.token);
           alert(response.data.msg);
-          if(response.data.status){
+          if(response.data.auth){
             store.dispatch(userData(response.data.userData));
+            console.log('auth true');
           }
         })
         .catch( err => {
