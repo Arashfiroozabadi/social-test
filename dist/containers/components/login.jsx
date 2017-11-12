@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
+
+import { connect } from 'react-redux';
+import { userData } from '../../store/actionCreators';
+import { store } from '../../store/store';
 
 import styled,{ keyframes } from 'styled-components';
 import { Paper, TextField } from 'material-ui';
@@ -76,6 +80,7 @@ class Login extends Component {
       }
     })
     .then( res => {
+      store.dispatch(userData(res.data.user));
       this.setState({
         token:res.data.msg
       });
@@ -90,6 +95,7 @@ class Login extends Component {
       }
     })
     .then( res => {
+      store.dispatch(userData(res.data.user));      
       this.setState({
         token:res.data.msg
       });
@@ -134,8 +140,14 @@ class Login extends Component {
       loading,
       msg,
       userName,
-      password
+      password,
+      userLogin
     } = this.props;
+    if(userLogin){
+      return(
+        <Redirect to='/' />
+      );
+    }
     return (
       <Container>
         <h5>{this.state.token}</h5>
@@ -159,7 +171,7 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    loading: state.prop
-  });
+  userLogin: state.userData.userLogin
+});
 
-export default connect()(Login);
+export default connect(mapStateToProps)(Login);
