@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import axios from 'axios';
 import styled,{ keyframes } from 'styled-components';
 import { FormattedDate, FormattedTime } from 'react-intl';
 import {
@@ -13,6 +14,7 @@ import {
   Divider
 } from 'material-ui';
 import {Favorite} from 'material-ui-icons';
+import {localUrl, IPurl} from '../../url';
 
 import {getApiDataPost} from '../../store/actionCreators';
 import '../../styles/img/test.svg';
@@ -21,6 +23,7 @@ import {store} from '../../store/store';
 const styles = {
   card: {
     maxWidth: 345,
+    width:345
   },
   cardContent: {
     display:"flex",
@@ -83,6 +86,18 @@ font-family: sans-serif;
 `;
 
 function Home ({ classes, posts, getApiPost }){
+  function handleFollow  () {
+    axios.get(`${localUrl}api/users/follow`,{
+      params:{test:'sdsad'},
+      headers:{
+        'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8',
+        'x-access-token': localStorage.token
+      }
+    })
+    .then(res => {
+      console.log(res.data.msg);
+    });
+  }
   if(!posts){
     return (
       <Spinner onLoad={store.dispatch(getApiDataPost())} />
@@ -98,7 +113,7 @@ function Home ({ classes, posts, getApiPost }){
                 <img src={posts.authorAvatar} alt="" style={{width:"40px",height:"40px"}} />
                 <h4>{posts.authorPost}</h4>
               </div>
-              <Button className={classes.follow}>{posts.follow ? 'unfollow' :'follow'}</Button>
+              <Button onClick={handleFollow} className={classes.follow}>{posts.follow ? 'unfollow' :'follow'}</Button>
             </CardContent>
             <Divider />
             <CardMedia
@@ -138,7 +153,7 @@ function Home ({ classes, posts, getApiPost }){
 
 const Homee = withStyles(styles)(Home);
 const mapStateToProps = (state, ownProps) => ({
-  posts:state.apiPosts.posts
+  posts:state.apiPosts.posts,
 });
 const mapDispatchToProps = (dispatch, ownProps) => ({
     getApiPost:() => {

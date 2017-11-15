@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { localUrl, IPurl } from '../url';
+import {store} from './store';
 import {
 	ADD_API_DATA_POST,
 	LOGIN_USER,
@@ -31,7 +32,12 @@ export function addApiDataPost(apiPosts){
 }
 export function getApiDataPost(){
 	return dispatch => {
-		axios.get(`${localUrl}api/posts/all`)
+		axios.get(`${localUrl}api/posts/all`,{
+      headers:{
+        'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8',
+        'x-access-token': localStorage.token
+      }
+    })
 		.then( response => {
 			console.log(response.data);
 			dispatch(addApiDataPost(response.data));
