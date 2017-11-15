@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import { localUrl, IPurl } from '../url';
 import {
 	ADD_API_DATA_POST,
 	LOGIN_USER,
@@ -25,14 +25,14 @@ export function loginUser (userTokenID, userName){
 export function addApiDataPost(apiPosts){
 	return{
 		type:ADD_API_DATA_POST,
-		posts:apiPosts
+		apiPosts
 	};
 }
 export function getApiDataPost(){
 	return dispatch => {
-		axios.get('http://localhost:3000/posts')
-		// axios.get('http://192.168.1.34:3000/posts')
+		axios.get(`${localUrl}api/posts/all`)
 		.then( response => {
+			console.log(response.data);
 			dispatch(addApiDataPost(response.data));
 		})
 		.catch(error => {

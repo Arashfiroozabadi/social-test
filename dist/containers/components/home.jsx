@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import styled,{ keyframes } from 'styled-components';
-import { FormattedDate } from 'react-intl';
+import { FormattedDate, FormattedTime } from 'react-intl';
 import {
   withStyles,
   Button,
@@ -82,8 +82,8 @@ font-family: sans-serif;
 }
 `;
 
-function Home ({classes,posts,getApiPost}){
-  if(posts === undefined){
+function Home ({ classes, posts, getApiPost }){
+  if(!posts){
     return (
       <Spinner onLoad={store.dispatch(getApiDataPost())} />
     );
@@ -95,7 +95,7 @@ function Home ({classes,posts,getApiPost}){
           <Card className={classes.card}>
             <CardContent className={classes.cardContent}>
               <div className={classes.autherAvatar}>
-                <img src={posts.avatar} alt="" style={{width:"40px",height:"40px"}} />
+                <img src={posts.authorAvatar} alt="" style={{width:"40px",height:"40px"}} />
                 <h4>{posts.authorPost}</h4>
               </div>
               <Button className={classes.follow}>{posts.follow ? 'unfollow' :'follow'}</Button>
@@ -103,7 +103,7 @@ function Home ({classes,posts,getApiPost}){
             <Divider />
             <CardMedia
               className={classes.media}
-              image={posts.imgPost}
+              image={posts.image}
             />
             <Divider />        
             <CardContent className={classes.description}>
@@ -117,10 +117,13 @@ function Home ({classes,posts,getApiPost}){
             </CardContent>
             <CardContent className={classes.cardFooter}>
               <div>
-                <h5>{`Liks ${posts.likes.length}`}</h5>
+                <h5>{`Liks ${posts.liks.length}`}</h5>
+                <FormattedTime
+                  value={posts.date}
+                />
               </div>
               <FormattedDate
-                value={posts.dataCreate}
+                value={posts.date}
                 year='numeric'
                 month='long'
                 day='2-digit'

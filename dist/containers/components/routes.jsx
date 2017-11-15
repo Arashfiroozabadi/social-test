@@ -6,6 +6,7 @@ import List from './list';
 import Home from './home';
 import Users from './users';
 import Login from './login';
+import PostForm from './sendPost';
 
 
 
@@ -14,7 +15,8 @@ const routeComp = [
   {path:'/signup', comp:FormOne},
   {path:'/login', comp:Login},
   {path:'/list', comp:List},
-  {path:'/user', comp:Users}
+  {path:'/user', comp:Users},
+  {path:'/sendpost', comp:PostForm}
 ];
 
 

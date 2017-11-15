@@ -43,7 +43,7 @@ export const apiPosts = (state =[], action) => {
 	if(action.type === ADD_API_DATA_POST) {
 		return Object.assign({},
 			state,{
-				posts:action.posts
+				posts:action.apiPosts.posts
 			}
 		);
 	}

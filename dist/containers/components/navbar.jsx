@@ -41,6 +41,9 @@ class NavbarLink extends Component {
             <LinkContainer replace to="/user">
               <NavItem eventKey={5}>Users</NavItem>
             </LinkContainer>
+            <LinkContainer replace to="/sendpost">
+              <NavItem eventKey={5}>Send Post</NavItem>
+            </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

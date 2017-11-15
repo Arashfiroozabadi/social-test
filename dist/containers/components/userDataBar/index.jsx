@@ -2,14 +2,18 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+
+import { FormattedNumber } from 'react-intl';
 import { Paper, Button } from 'material-ui';
 import styled from 'styled-components';
-import {FormattedNumber} from 'react-intl';
-// import { Button } from 'react-bootstrap';
 
-import AA from  '../../../styles/img/me.jpg';
+import { connect } from 'react-redux';
+import { userData } from '../../../store/actionCreators';
 import { store } from '../../../store/store';
+
+
+// import { Button } from 'react-bootstrap';
+import AA from  '../../../styles/img/me.jpg';
 
 
 const Block = styled(Paper)`
@@ -69,6 +73,15 @@ class UserDataBar extends Component {
     userLogin:PropTypes.bool.isRequired
   }
   componentDidMount(){
+    axios.get('http://localhost:3000/api/auth/me',{
+      headers:{
+        'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8',
+        'x-access-token': localStorage.token
+      }
+    })
+    .then( res => {
+      store.dispatch(userData(res.data.user));
+    });
   }
   render() {
     const {

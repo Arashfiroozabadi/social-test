@@ -81,12 +81,9 @@ class Login extends Component {
     })
     .then( res => {
       store.dispatch(userData(res.data.user));
-      this.setState({
-        token:res.data.msg
-      });
     });
   }
-
+  
   getToken = () => {
     axios.get('http://localhost:3000/api/auth/me',{
       headers:{
@@ -95,10 +92,9 @@ class Login extends Component {
       }
     })
     .then( res => {
-      store.dispatch(userData(res.data.user));      
       this.setState({
         token:res.data.msg
-      });
+      },this.dispatchData(res.data.user));
     });
   }
   
@@ -123,6 +119,9 @@ class Login extends Component {
   }
   setToken= token => {
     localStorage.setItem('token',token);  
+  }
+  dispatchData= data => {
+    store.dispatch(userData(data));
   }
   handleUserInput = e => { 
     const name = e.target.name;
