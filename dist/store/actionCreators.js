@@ -22,6 +22,7 @@ export function loginUser (userTokenID, userName){
 	};
 }
 
+
 export function addApiDataPost(apiPosts){
 	return{
 		type:ADD_API_DATA_POST,
